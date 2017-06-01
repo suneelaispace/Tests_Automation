@@ -1,0 +1,1919 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.2 r1790748">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Defaults_CTServer_Testcases" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Defaults_CTC" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1493285646000</longProp>
+        <longProp name="ThreadGroup.end_time">1493285646000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname=" Presetup Header " enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept</stringProp>
+              <stringProp name="Header.value">Application/JSON</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">Application/JSON</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Authorization</stringProp>
+              <stringProp name="Header.value">bearer ${accesstoken}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="Presetup Severdetails" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">fl-ctconnect.nimaws.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Parameters" enabled="true">
+          <stringProp name="filename">D:\Automation_CT_New\TestData_emails_Defaults.txt</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames">email,password,mdn,device_uniqueid,callbackURL,mdn1,device_uniqueid1</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Presetup:Create a Account" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;accepted_ts_and_cs&quot;: false,&#xd;
+  &quot;email&quot;: &quot;${email}&quot;,&#xd;
+  &quot;invite_code&quot;: &quot;&quot;,&#xd;
+  &quot;last_name&quot;: &quot;smoke&quot;,&#xd;
+  &quot;name&quot;: &quot;smoke1&quot;,&#xd;
+  &quot;password&quot;: &quot;${password}&quot;,&#xd;
+  &quot;time_zone&quot;: &quot;America/Los_Angeles&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/accounts</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  Account ID" enabled="true">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+log.info(&quot;This is suneela&quot; + data);
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+log.info(&quot;This is suneela&quot; + result);
+def id = result.get(&quot;account_id&quot;);
+
+// Persist the TemplateId of the new Template in the context.
+vars.put(&apos;accountid&apos;, id );
+id = id+&quot;.members&quot;;
+log.info(&quot;This is suneela&quot; + id);
+vars.put(&apos;groupid&apos;, id );</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-803333011">account_id</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PreSetup:Login to a Account " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;email&quot;: &quot;${email}&quot;,&#xd;
+  &quot;password&quot;: &quot;${password}&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/login</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1177318867">account</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+            <stringProp name="Scope.variable">sampler log</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  AccessToken" enabled="true">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+//log.info(&quot;This is sreedhar &quot; + data);
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+//log.info(&quot;This is suneela sreedhar &quot; + result);
+def id = result.get(&quot;jwt&quot;);
+
+// Persist the TemplateId of the new Template in the context.
+//vars.put(&apos;temp&apos;, id );
+//println(&quot; suneela &quot; + id);
+//log.info(&quot;This is suneela jwt&quot; + id);
+def id1 = id.get(&quot;access_token&quot;);
+log.info(&quot;This is suneela access_token is &quot; + id1);
+vars.put(&apos;accesstoken&apos;, id1 );</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PreSetup:Get an Account Information" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/accounts/${accountid}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  Account information" enabled="true">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+
+String data = prev.getResponseDataAsString();
+
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+
+def id = result.get(&quot;account_id&quot;);
+log.info(&quot;This is account &quot; + id);
+//def id = result.get(&quot;account_id&quot;);
+log.info(&quot;This is group ifno  &quot; + &quot;${groupid}&quot;);
+//assert id ==  ${accountid};
+// Persist the TemplateId of the new Template in the context.
+/* def newaccountid = ${accountid};
+
+Failure = !newaccounid.equals(id);
+vars.put(&apos;newid&apos;, id );
+
+if (id == newid) {
+  FailureMessage = &quot;Account ids are not matching&quot;;
+} */</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-803333011">account_id</stringProp>
+              <stringProp name="96619420">email</stringProp>
+              <stringProp name="0"></stringProp>
+              <stringProp name="0"></stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+            <stringProp name="Scope.variable"></stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Presetup: Create a device " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"> {&#xd;
+  &quot;group_id&quot;: &quot;${groupid}&quot;,&#xd;
+  &quot;mdn&quot;: &quot;${mdn}&quot;,&#xd;
+  &quot;model&quot;: &quot;osmodel&quot;,&#xd;
+  &quot;name&quot;: &quot;Android&quot;,&#xd;
+  &quot;os&quot;: &quot;osname&quot;,&#xd;
+  &quot;os_version&quot;: &quot;os1.0&quot;,&#xd;
+  &quot;push_token&quot;: &quot;dsds&quot;,&#xd;
+  &quot;unique_id&quot;: &quot;${device_uniqueid}&quot;,&#xd;
+  &quot;location_agent_id&quot;: &quot;none&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/devices</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  Account information" enabled="true">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+
+
+def id = result.get(&quot;device_id&quot;);
+// Persist the TemplateId of the new Template in the context.
+vars.put(&apos;deviceid&apos;, id );
+
+def id1 = result.get(&quot;fk_device_id&quot;)
+vars.put(&apos;fkdeviceid&apos;, id1 );
+
+
+</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PreSetup:Get an device  Information" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/devices?unique_id=${device_uniqueid}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  Account information" enabled="false">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+log.info(&quot;This is result  info&quot; + result);
+result = result[0];
+log.info(&quot;This is new result info&quot; + result);
+def id = result.get(&quot;device_id&quot;)
+log.info(&quot;This is new result info&quot; + result);
+// Persist the TemplateId of the new Template in the context.
+vars.put(&apos;deviceid&apos;, id );
+
+def id1 = result.get(&quot;fk_device_id&quot;)
+vars.put(&apos;fkdeviceid&apos;, id1 );
+
+
+</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="25209764">device_id</stringProp>
+              <stringProp name="-182435670">fk_device_id</stringProp>
+              <stringProp name="0"></stringProp>
+              <stringProp name="0"></stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+            <stringProp name="Scope.variable"></stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname=" PreSetup :Create Place" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;categories&quot;: [&#xd;
+    {&#xd;
+      &quot;code&quot;: &quot;1&quot;,&#xd;
+      &quot;name&quot;: &quot;place1&quot;,&#xd;
+      &quot;parent_category&quot;: {&quot;code&quot;: &quot;my_category&quot;,&#xd;
+                          &quot;name&quot;: &quot;parent place&quot;}&#xd;
+    }&#xd;
+  ],&#xd;
+  &quot;enhanced_contents&quot;: &quot;my_enhanced_contents&quot;,&#xd;
+  &quot;geofence&quot;: {&#xd;
+    &quot;latitude&quot;: 33.654619,&#xd;
+    &quot;longitude&quot;: -117.651162,&#xd;
+    &quot;name&quot;: &quot;THHS Fence&quot;,&#xd;
+    &quot;radius&quot;: 400&#xd;
+  },&#xd;
+  &quot;group_id&quot;: &quot;${groupid}&quot;,&#xd;
+  &quot;location&quot;: {&#xd;
+    &quot;city&quot;: &quot;Mission Viejo&quot;,&#xd;
+    &quot;coordinate&quot;: {&#xd;
+      &quot;latitude&quot;: 33.654252,&#xd;
+      &quot;longitude&quot;: -117.650531&#xd;
+    },&#xd;
+    &quot;country&quot;: &quot;USA&quot;,&#xd;
+    &quot;country_code&quot;: &quot;331&quot;,&#xd;
+    &quot;formatted_address&quot;: &quot;27501 Mustang Run, Mission Viejo, CA&quot;,&#xd;
+    &quot;house_number&quot;: 27501,&#xd;
+    &quot;postal&quot;: 92691,&#xd;
+    &quot;state&quot;: &quot;CA&quot;,&#xd;
+    &quot;street&quot;: &quot;Mustang Run&quot;,&#xd;
+    &quot;type&quot;: &quot;School&quot;&#xd;
+  },&#xd;
+  &quot;ltk_place_id&quot;: &quot;&quot;,&#xd;
+  &quot;name&quot;: &quot;Trabuco Hills High School&quot;,&#xd;
+  &quot;phones&quot;: [&#xd;
+    {&#xd;
+      &quot;area&quot;: 949,&#xd;
+      &quot;country&quot;: 1,&#xd;
+      &quot;number&quot;: 7681934,&#xd;
+      &quot;type&quot;: &quot;home&quot;&#xd;
+    }&#xd;
+  ]&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/places</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="save place id" enabled="true">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+
+def id = result.get(&quot;place_id&quot;)
+
+// Persist the TemplateId of the new Template in the context.
+vars.put(&apos;placeid&apos;, id );</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC1: Verify Uploading a new image to the server for  a particular image data " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: &quot;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&quot;,&#xd;
+  &quot;height&quot;: &quot;12&quot;,&#xd;
+  &quot;type&quot;: &quot;&quot;,&#xd;
+  &quot;width&quot;: &quot;12&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/images</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  image id" enabled="true">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+//log.info(&quot;This is sreedhar &quot; + data);
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+//log.info(&quot;This is suneela sreedhar &quot; + result);
+def id = result.get(&quot;image_id&quot;);
+
+vars.put(&apos;imageid_TC1&apos;, id);</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-859601281">image_id</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+            <stringProp name="Scope.variable">sampler log</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC1: Verify using get " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/images/${imageid_TC1}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  image id" enabled="false">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+//log.info(&quot;This is sreedhar &quot; + data);
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+//log.info(&quot;This is suneela sreedhar &quot; + result);
+def id = result.get(&quot;image_id&quot;);
+
+vars.put(&apos;imageid_TC1&apos;, id);</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+            <stringProp name="Scope.variable">sampler log</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC2: Verify Uploading a new image to the server for  a particular image data by specifying height  " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: &quot;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&quot;,&#xd;
+  &quot;height&quot;: &quot;120&quot;,&#xd;
+  &quot;type&quot;: &quot;&quot;,&#xd;
+  &quot;width&quot;: &quot;12&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/images</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  image id" enabled="true">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+//log.info(&quot;This is sreedhar &quot; + data);
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+//log.info(&quot;This is suneela sreedhar &quot; + result);
+def id = result.get(&quot;image_id&quot;);
+
+vars.put(&apos;imageid_TC2&apos;, id);</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-859601281">image_id</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+            <stringProp name="Scope.variable">sampler log</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC2: Verify using get " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/images/${imageid_TC2}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  image id" enabled="false">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+//log.info(&quot;This is sreedhar &quot; + data);
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+//log.info(&quot;This is suneela sreedhar &quot; + result);
+def id = result.get(&quot;image_id&quot;);
+
+vars.put(&apos;imageid_TC1&apos;, id);</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+            <stringProp name="Scope.variable">sampler log</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC3: Verify Uploading a new image to the server for  a particular image data by specifying width  " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: &quot;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&quot;,&#xd;
+  &quot;height&quot;: &quot;120&quot;,&#xd;
+  &quot;type&quot;: &quot;&quot;,&#xd;
+  &quot;width&quot;: &quot;120&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/images</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  image id" enabled="true">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+//log.info(&quot;This is sreedhar &quot; + data);
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+//log.info(&quot;This is suneela sreedhar &quot; + result);
+def id = result.get(&quot;image_id&quot;);
+
+vars.put(&apos;imageid_TC3&apos;, id);</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-859601281">image_id</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+            <stringProp name="Scope.variable">sampler log</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC3: Verify using get " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/images/${imageid_TC3}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  image id" enabled="false">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+//log.info(&quot;This is sreedhar &quot; + data);
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+//log.info(&quot;This is suneela sreedhar &quot; + result);
+def id = result.get(&quot;image_id&quot;);
+
+vars.put(&apos;imageid_TC1&apos;, id);</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+            <stringProp name="Scope.variable">sampler log</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC4: Verify Uploading a new image to the server for  a particular image data by specifying width  " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: &quot;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&quot;,&#xd;
+  &quot;height&quot;: &quot;120&quot;,&#xd;
+  &quot;type&quot;: &quot;JPEG&quot;,&#xd;
+  &quot;width&quot;: &quot;120&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/images</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  image id" enabled="true">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+//log.info(&quot;This is sreedhar &quot; + data);
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+//log.info(&quot;This is suneela sreedhar &quot; + result);
+def id = result.get(&quot;image_id&quot;);
+
+vars.put(&apos;imageid_TC4&apos;, id);</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-859601281">image_id</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+            <stringProp name="Scope.variable">sampler log</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC4: Verify using get " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/images/${imageid_TC4}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  image id" enabled="false">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+//log.info(&quot;This is sreedhar &quot; + data);
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+//log.info(&quot;This is suneela sreedhar &quot; + result);
+def id = result.get(&quot;image_id&quot;);
+
+vars.put(&apos;imageid_TC1&apos;, id);</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+            <stringProp name="Scope.variable">sampler log</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC5: Verify Uploading a new image to the server for  a particular image data by specifying type of the image (bmp) " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: &quot;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&quot;,&#xd;
+  &quot;height&quot;: &quot;120&quot;,&#xd;
+  &quot;type&quot;: &quot;bmp&quot;,&#xd;
+  &quot;width&quot;: &quot;120&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/images</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  image id" enabled="true">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+//log.info(&quot;This is sreedhar &quot; + data);
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+//log.info(&quot;This is suneela sreedhar &quot; + result);
+def id = result.get(&quot;image_id&quot;);
+
+vars.put(&apos;imageid_TC5&apos;, id);</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-859601281">image_id</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+            <stringProp name="Scope.variable">sampler log</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC5: Verify using get " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/images/${imageid_TC5}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  image id" enabled="false">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+//log.info(&quot;This is sreedhar &quot; + data);
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+//log.info(&quot;This is suneela sreedhar &quot; + result);
+def id = result.get(&quot;image_id&quot;);
+
+vars.put(&apos;imageid_TC1&apos;, id);</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+            <stringProp name="Scope.variable">sampler log</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC6: Verify Uploading a new image to the server for  a particular image data by specifying type of the image (GIF) " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: &quot;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&quot;,&#xd;
+  &quot;height&quot;: &quot;120&quot;,&#xd;
+  &quot;type&quot;: &quot;GIF&quot;,&#xd;
+  &quot;width&quot;: &quot;120&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/images</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  image id" enabled="true">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+//log.info(&quot;This is sreedhar &quot; + data);
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+//log.info(&quot;This is suneela sreedhar &quot; + result);
+def id = result.get(&quot;image_id&quot;);
+
+vars.put(&apos;imageid_TC6&apos;, id);</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-859601281">image_id</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+            <stringProp name="Scope.variable">sampler log</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC6: Verify using get " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/images/${imageid_TC6}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  image id" enabled="false">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+//log.info(&quot;This is sreedhar &quot; + data);
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+//log.info(&quot;This is suneela sreedhar &quot; + result);
+def id = result.get(&quot;image_id&quot;);
+
+vars.put(&apos;imageid_TC1&apos;, id);</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+            <stringProp name="Scope.variable">sampler log</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC7: Verify Uploading a new image to the server for  a particular image data by specifying type of the image (PNG) " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;data&quot;: &quot;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&quot;,&#xd;
+  &quot;height&quot;: &quot;120&quot;,&#xd;
+  &quot;type&quot;: &quot;PNG&quot;,&#xd;
+  &quot;width&quot;: &quot;120&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/images</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  image id" enabled="true">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+//log.info(&quot;This is sreedhar &quot; + data);
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+//log.info(&quot;This is suneela sreedhar &quot; + result);
+def id = result.get(&quot;image_id&quot;);
+
+vars.put(&apos;imageid_TC7&apos;, id);</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-859601281">image_id</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+            <stringProp name="Scope.variable">sampler log</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC7: Verify using get " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/images/${imageid_TC7}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  image id" enabled="false">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+//log.info(&quot;This is sreedhar &quot; + data);
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+//log.info(&quot;This is suneela sreedhar &quot; + result);
+def id = result.get(&quot;image_id&quot;);
+
+vars.put(&apos;imageid_TC1&apos;, id);</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+            <stringProp name="Scope.variable">sampler log</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC8 : Verify user deletes an existing image  " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/images/${imageid_TC7}</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  Account information" enabled="false">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+
+String data = prev.getResponseDataAsString();
+
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+
+def id = result.get(&quot;account_id&quot;);
+log.info(&quot;This is account &quot; + id);
+//def id = result.get(&quot;account_id&quot;);
+log.info(&quot;This is group ifno  &quot; + &quot;${groupid_TC1}&quot;);
+//assert id ==  ${accountid};
+// Persist the TemplateId of the new Template in the context.
+/* def newaccountid = ${accountid};
+
+Failure = !newaccounid.equals(id);
+vars.put(&apos;newid&apos;, id );
+
+if (id == newid) {
+  FailureMessage = &quot;Account ids are not matching&quot;;
+} */</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+            <stringProp name="Scope.variable"></stringProp>
+            <stringProp name="Assertion.scope">all</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC8: Verify using get " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/images/${imageid_TC7}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  image id" enabled="false">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+//log.info(&quot;This is sreedhar &quot; + data);
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+//log.info(&quot;This is suneela sreedhar &quot; + result);
+def id = result.get(&quot;image_id&quot;);
+
+vars.put(&apos;imageid_TC1&apos;, id);</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="51512">404</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">6</intProp>
+            <stringProp name="Scope.variable">sampler log</stringProp>
+            <stringProp name="Assertion.scope">all</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC9 : Verify user deletes an non existing image  " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/images/12345</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  Account information" enabled="false">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+
+String data = prev.getResponseDataAsString();
+
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+
+def id = result.get(&quot;account_id&quot;);
+log.info(&quot;This is account &quot; + id);
+//def id = result.get(&quot;account_id&quot;);
+log.info(&quot;This is group ifno  &quot; + &quot;${groupid_TC1}&quot;);
+//assert id ==  ${accountid};
+// Persist the TemplateId of the new Template in the context.
+/* def newaccountid = ${accountid};
+
+Failure = !newaccounid.equals(id);
+vars.put(&apos;newid&apos;, id );
+
+if (id == newid) {
+  FailureMessage = &quot;Account ids are not matching&quot;;
+} */</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="51512">404</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+            <stringProp name="Scope.variable"></stringProp>
+            <stringProp name="Assertion.scope">all</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC9: Verify using get " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/images/12345</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  image id" enabled="false">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+String data = prev.getResponseDataAsString();
+//log.info(&quot;This is sreedhar &quot; + data);
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+//log.info(&quot;This is suneela sreedhar &quot; + result);
+def id = result.get(&quot;image_id&quot;);
+
+vars.put(&apos;imageid_TC1&apos;, id);</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="51512">404</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+            <stringProp name="Scope.variable">sampler log</stringProp>
+            <stringProp name="Assertion.scope">all</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TC10 : Verify the HTML-encoded text for Terms and Conditions to be displayed when creating an account. " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/terms_and_conditions</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  Account information" enabled="false">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+
+String data = prev.getResponseDataAsString();
+
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+
+def id = result.get(&quot;account_id&quot;);
+log.info(&quot;This is account &quot; + id);
+//def id = result.get(&quot;account_id&quot;);
+log.info(&quot;This is group ifno  &quot; + &quot;${groupid_TC1}&quot;);
+//assert id ==  ${accountid};
+// Persist the TemplateId of the new Template in the context.
+/* def newaccountid = ${accountid};
+
+Failure = !newaccounid.equals(id);
+vars.put(&apos;newid&apos;, id );
+
+if (id == newid) {
+  FailureMessage = &quot;Account ids are not matching&quot;;
+} */</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="3213227">html</stringProp>
+              <stringProp name="3076014">date</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+            <stringProp name="Scope.variable"></stringProp>
+            <stringProp name="Assertion.scope">all</stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Cleanup:delete an image TC6" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/images/${imageid_TC6}</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Save  Account information" enabled="false">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import org.apache.jmeter.samplers.SampleResult; 
+import groovy.json.JsonSlurper;
+
+
+String data = prev.getResponseDataAsString();
+
+def slurper = new JsonSlurper();
+def result  = slurper.parseText(data);
+
+def id = result.get(&quot;account_id&quot;);
+log.info(&quot;This is account &quot; + id);
+//def id = result.get(&quot;account_id&quot;);
+log.info(&quot;This is group ifno  &quot; + &quot;${groupid_TC1}&quot;);
+//assert id ==  ${accountid};
+// Persist the TemplateId of the new Template in the context.
+/* def newaccountid = ${accountid};
+
+Failure = !newaccounid.equals(id);
+vars.put(&apos;newid&apos;, id );
+
+if (id == newid) {
+  FailureMessage = &quot;Account ids are not matching&quot;;
+} */</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert image_id returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+              <stringProp name="0"></stringProp>
+              <stringProp name="0"></stringProp>
+              <stringProp name="0"></stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+            <stringProp name="Scope.variable"></stringProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Cleanup :Delete a created device" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/devices/${deviceid}</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert Response code " enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Cleanup :Delete a created place " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/places/${placeid}</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert Response code " enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Cleanup:Delete an account " enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">v1/accounts/${accountid}</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert Response code " enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Defaults_CTC_Report " enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>false</time>
+              <latency>false</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>false</assertions>
+              <subresults>false</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <fileName>true</fileName>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename">D:\VZFL\TestAutomation\Defaults_CTC_Report .csv</stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="WorkBench" enabled="true">
+      <boolProp name="WorkBench.save">true</boolProp>
+    </WorkBench>
+    <hashTree>
+      <ProxyControl guiclass="ProxyControlGui" testclass="ProxyControl" testname="HTTP(S) Test Script Recorder" enabled="true">
+        <stringProp name="ProxyControlGui.port">8080</stringProp>
+        <collectionProp name="ProxyControlGui.exclude_list"/>
+        <collectionProp name="ProxyControlGui.include_list"/>
+        <boolProp name="ProxyControlGui.capture_http_headers">true</boolProp>
+        <intProp name="ProxyControlGui.grouping_mode">0</intProp>
+        <boolProp name="ProxyControlGui.add_assertion">false</boolProp>
+        <stringProp name="ProxyControlGui.sampler_type_name"></stringProp>
+        <boolProp name="ProxyControlGui.sampler_redirect_automatically">false</boolProp>
+        <boolProp name="ProxyControlGui.sampler_follow_redirects">true</boolProp>
+        <boolProp name="ProxyControlGui.use_keepalive">true</boolProp>
+        <boolProp name="ProxyControlGui.sampler_download_images">false</boolProp>
+        <stringProp name="ProxyControlGui.proxy_prefix_http_sampler_name"></stringProp>
+        <boolProp name="ProxyControlGui.notify_child_sl_filtered">true</boolProp>
+        <boolProp name="ProxyControlGui.regex_match">false</boolProp>
+        <stringProp name="ProxyControlGui.content_type_include"></stringProp>
+        <stringProp name="ProxyControlGui.content_type_exclude"></stringProp>
+      </ProxyControl>
+      <hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
